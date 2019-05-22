@@ -8,15 +8,16 @@ In order to be used as a Laser Cutter/Engraver the code will support a new axis 
 Required:
   Install WebIOPi follow instructions http://webiopi.trouch.com/INSTALL.html
 
-Configure the WebIOPi server /etc/webiopi/config, correct the folder to where you have installed PyCNC Web
-  myscript = /home/pi/Desktop/PyCNC/PyCNC-master/cnc/script.py  
-  doc-root = /home/pi/Desktop/PyCNC/PyCNC-master/htdocs     
+Configure the WebIOPi server /etc/webiopi/config.    
 
 In the /PyCNC-master/htdocs folder you will find the web site files accessible in the browser address:
   http://raspberrypi:8000/
 
-The script.py is the python code that makes the interface with the web.
-GPIO 25 has a Led connected to test web commands.
+
+copy the file PyCNC-master/extra/pycnc.conf to /etc/pycnc.conf
+
+The /usr/local/lib/python2.7/dist-packages/cnc/script.py is the python code that makes the interface with the web.
+GPIO 17 has a Led connected to test web commands.
 
 Note:
   Append those paths with the correct folders inside the script.py so that

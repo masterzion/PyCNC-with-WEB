@@ -2,19 +2,20 @@
 # Need to change /etc/webiopi
 
 # Imports
-import os
-import webiopi
-import sys,time
-import readline
-import atexit
+import os,webiopi,sys,time,readline,atexit,ConfigParser,ConfigParser
 
-sys.path.append('/home/pi/Desktop/PyCNC/PyCNC-master')
-sys.path.append('/home/pi/Desktop/PyCNC/PyCNC-master/cnc/hal_raspberry')
+configFilePath = '/etc/pycnc.conf'
+
+
+localdir=os.path.dirname(os.path.abspath(__file__))
+print localdir
+
+sys.path.append(localdir+'../')
+sys.path.append(localdir+'hal_raspberry')
 
 import cnc.logging_config as logging_config
 from cnc.gcode import GCode, GCodeException
 from cnc.gmachine import GMachine, GMachineException
-
 
 
 # Enable debug output
@@ -31,23 +32,26 @@ machine = GMachine()
 # Retrieve GPIO lib
 GPIO = webiopi.GPIO
 
+configParser = ConfigParser.RawConfigParser()
+configParser.read(configFilePath)
+
+
 # -------------------------------------------------- #
 # Constants definition                               #
 # -------------------------------------------------- #
-LED_GREEN   = 25
+LED_GREEN   = configParser.get('CONTROL', 'LED')
 
-STEPPER_STEP_PIN_X  = 13
-STEPPER_DIR_PIN_X   = 6
-ENDSTOP_PIN_X       = 24
+STEPPER_STEP_PIN_X  = configParser.getint('AXIS', 'STEPPER_STEP_PIN_X')
+STEPPER_DIR_PIN_X   = configParser.getint('AXIS', 'STEPPER_DIR_PIN_X')
+ENDSTOP_PIN_X       = configParser.getint('AXIS', 'ENDSTOP_PIN_X')
 
-STEPPER_STEP_PIN_Y  = 21
-STEPPER_DIR_PIN_Y   = 20
-ENDSTOP_PIN_Y       = 23
+STEPPER_STEP_PIN_Y  = configParser.getint('AXIS', 'STEPPER_STEP_PIN_Y')
+STEPPER_DIR_PIN_Y   = configParser.getint('AXIS', 'STEPPER_DIR_PIN_Y')
+ENDSTOP_PIN_Y       = configParser.getint('AXIS', 'ENDSTOP_PIN_Y')
 
-STEPPER_STEP_PIN_Z  = 26
-STEPPER_DIR_PIN_Z   = 19
-ENDSTOP_PIN_Z       = 17
-
+STEPPER_STEP_PIN_Z  = configParser.getint('AXIS', 'STEPPER_STEP_PIN_Z')
+STEPPER_DIR_PIN_Z   = configParser.getint('AXIS', 'STEPPER_DIR_PIN_Z')
+ENDSTOP_PIN_Z       = configParser.getint('AXIS', 'ENDSTOP_PIN_Z')
 
 
 # -------------------------------------------------- #

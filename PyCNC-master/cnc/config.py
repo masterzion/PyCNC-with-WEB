@@ -1,3 +1,12 @@
+import ConfigParser
+
+configFilePath = '/etc/pycnc.conf'
+
+
+configParser = ConfigParser.RawConfigParser()
+configParser.read(configFilePath)
+
+
 # -----------------------------------------------------------------------------
 # Hardware config.
 
@@ -62,29 +71,30 @@ BED_PID = {"P": 0.226740848076,
 # Pins configuration.
 
 # Enable pin for all steppers, low level is enabled.
-STEPPERS_ENABLE_PIN = 16        #26 12
+STEPPERS_ENABLE_PIN = configParser.getint('CONTROL', 'STEPPERS_ENABLE_PIN')
 
-STEPPER_STEP_PIN_X  = 13        #21
-STEPPER_DIR_PIN_X   = 6         #20
-ENDSTOP_PIN_X       = 24
+STEPPER_STEP_PIN_X  = configParser.getint('AXIS', 'STEPPER_STEP_PIN_X')
+STEPPER_DIR_PIN_X   = configParser.getint('AXIS', 'STEPPER_DIR_PIN_X')
+ENDSTOP_PIN_X       = configParser.getint('AXIS', 'ENDSTOP_PIN_X')
 
-STEPPER_STEP_PIN_Y  = 21
-STEPPER_DIR_PIN_Y   = 20        #19
-ENDSTOP_PIN_Y       = 23        #10 not connected
+STEPPER_STEP_PIN_Y  = configParser.getint('AXIS', 'STEPPER_STEP_PIN_Y')
+STEPPER_DIR_PIN_Y   = configParser.getint('AXIS', 'STEPPER_DIR_PIN_Y')
+ENDSTOP_PIN_Y       = configParser.getint('AXIS', 'ENDSTOP_PIN_Y')
 
-STEPPER_STEP_PIN_Z  = 26        #12
-STEPPER_DIR_PIN_Z   = 19        #13
-ENDSTOP_PIN_Z       = 17        #25
+STEPPER_STEP_PIN_Z  = configParser.getint('AXIS', 'STEPPER_STEP_PIN_Z')
+STEPPER_DIR_PIN_Z   = configParser.getint('AXIS', 'STEPPER_DIR_PIN_Z')
+ENDSTOP_PIN_Z       = configParser.getint('AXIS', 'ENDSTOP_PIN_Z')
 
-STEPPER_STEP_PIN_E  = 8
-STEPPER_DIR_PIN_E   = 7
+STEPPER_STEP_PIN_E  = configParser.getint('AXIS', 'STEPPER_STEP_PIN_E')
+STEPPER_DIR_PIN_E   = configParser.getint('AXIS', 'STEPPER_DIR_PIN_E')
 
-SPINDLE_PWM_PIN = 4
-FAN_PIN = 27
-EXTRUDER_HEATER_PIN = 18
-BED_HEATER_PIN = 22
-EXTRUDER_TEMPERATURE_SENSOR_CHANNEL = 2
-BED_TEMPERATURE_SENSOR_CHANNEL = 1
+SPINDLE_PWM_PIN     = configParser.getint('CONTROL', 'SPINDLE_PWM_PIN')
+FAN_PIN             = configParser.getint('CONTROL', 'FAN_PIN')
+EXTRUDER_HEATER_PIN = configParser.getint('CONTROL', 'EXTRUDER_HEATER_PIN')
+BED_HEATER_PIN      = configParser.getint('CONTROL', 'BED_HEATER_PIN')
+
+EXTRUDER_TEMPERATURE_SENSOR_CHANNEL = configParser.getint('CONTROL', 'EXTRUDER_TEMPERATURE_SENSOR_CHANNEL')
+BED_TEMPERATURE_SENSOR_CHANNEL = configParser.getint('CONTROL', 'BED_TEMPERATURE_SENSOR_CHANNEL')
 
 
 # -----------------------------------------------------------------------------
