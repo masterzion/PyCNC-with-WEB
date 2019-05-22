@@ -13,11 +13,11 @@ Configure the WebIOPi server /etc/webiopi/config.
 In the /PyCNC-master/htdocs folder you will find the web site files accessible in the browser address:
   http://raspberrypi:8000/
 
+The /usr/local/lib/python2.7/dist-packages/cnc/script.py is the python code that makes the interface with the web.
+GPIO 17 has a Led connected to test web commands.
 
 copy the file PyCNC-master/extra/pycnc.conf to /etc/pycnc.conf
 
-The /usr/local/lib/python2.7/dist-packages/cnc/script.py is the python code that makes the interface with the web.
-GPIO 17 has a Led connected to test web commands.
 
 Note:
   Append those paths with the correct folders inside the script.py so that
