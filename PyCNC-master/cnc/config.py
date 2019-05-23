@@ -1,9 +1,9 @@
-import ConfigParser
+import configparser
 
 configFilePath = '/etc/pycnc.conf'
 
 
-configParser = ConfigParser.RawConfigParser()
+configParser = configparser.RawConfigParser()
 configParser.read(configFilePath)
 
 

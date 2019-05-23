@@ -6,17 +6,26 @@ This cloned version is being transformed to support web interface to control a m
 In order to be used as a Laser Cutter/Engraver the code will support a new axis to control a Laser diode.
 
 Required:
-  Install WebIOPi follow instructions http://webiopi.trouch.com/INSTALL.html
+1)  Install WebIOPi follow instructions http://webiopi.trouch.com/INSTALL.html
 
-Configure the WebIOPi server /etc/webiopi/config.    
+2) copy the file PyCNC-master/extra/pycnc.conf to /etc/pycnc.conf
 
-In the /PyCNC-master/htdocs folder you will find the web site files accessible in the browser address:
-  http://raspberrypi:8000/
+3) Configure the WebIOPi server /etc/webiopi/config.
+myscript = /usr/local/lib/python3.4/dist-packages/cnc/script.py
+doc-root=/usr/local/lib/python3.4/dist-packages/cnc/webiopi/
 
-The /usr/local/lib/python2.7/dist-packages/cnc/script.py is the python code that makes the interface with the web.
+4) restart the service:
+/etc/init.d/webiopi restart
+
+The webservcer address:
+http://raspberrypi:8000/
+
 GPIO 17 has a Led connected to test web commands.
 
-copy the file PyCNC-master/extra/pycnc.conf to /etc/pycnc.conf
+
+
+http://hostname:8000/
+
 
 
 Note:

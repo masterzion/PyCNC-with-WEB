@@ -112,12 +112,12 @@ interactive terminal mode where gcode commands can be entered manually.
 To run file with gcode commands, just run `./pycnc filename`.  
 Optionally, `pycnc` can be installed. Run
 ```bash
-sudo pip install .
+sudo pip3 install .
 ```
 in repo root directory to install it. After than, `pycnc` command will be added
 to system path. To remove installation, just run:
 ```bash
-sudo pip remove pycnc
+sudo pip uninstall pycnc
 ```
 
 # Performance notice

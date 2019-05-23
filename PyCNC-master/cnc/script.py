@@ -2,16 +2,17 @@
 # Need to change /etc/webiopi
 
 # Imports
-import os,webiopi,sys,time,readline,atexit,ConfigParser,ConfigParser
+import os,webiopi,sys,time,readline,atexit
+
+import configparser
 
 configFilePath = '/etc/pycnc.conf'
 
 
 localdir=os.path.dirname(os.path.abspath(__file__))
-print localdir
 
-sys.path.append(localdir+'../')
-sys.path.append(localdir+'hal_raspberry')
+sys.path.append(localdir+'/../')
+sys.path.append(localdir+'/hal_raspberry')
 
 import cnc.logging_config as logging_config
 from cnc.gcode import GCode, GCodeException
@@ -32,14 +33,14 @@ machine = GMachine()
 # Retrieve GPIO lib
 GPIO = webiopi.GPIO
 
-configParser = ConfigParser.RawConfigParser()
+configParser = configparser.RawConfigParser()
 configParser.read(configFilePath)
 
 
 # -------------------------------------------------- #
 # Constants definition                               #
 # -------------------------------------------------- #
-LED_GREEN   = configParser.get('CONTROL', 'LED')
+LED_GREEN   = configParser.getint('CONTROL', 'LED')
 
 STEPPER_STEP_PIN_X  = configParser.getint('AXIS', 'STEPPER_STEP_PIN_X')
 STEPPER_DIR_PIN_X   = configParser.getint('AXIS', 'STEPPER_DIR_PIN_X')
