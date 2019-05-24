@@ -15,7 +15,7 @@ myscript = /usr/local/lib/python3.4/dist-packages/cnc/script.py
 doc-root=/usr/local/lib/python3.4/dist-packages/cnc/webiopi/
 
 4) restart the service:
-/etc/init.d/webiopi restart
+sudo /etc/init.d/webiopi restart
 
 The webservcer address:
 http://raspberrypi:8000/
